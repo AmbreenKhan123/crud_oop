@@ -1,11 +1,14 @@
+<?php
+require_once('./config/dbconfig.php');
+$db = new operations();
+$db->update();
+$id = $_GET['id'];
 
-<?php 
-    require_once('./config/dbconfig.php'); 
-    $db = new operations();
-    $db->update();
-    $id = $_GET['id'];
-    $result = $db->get_record($id);
-    $data = mysqli_fetch_assoc($result);
+$result = $db->get_record($id);
+$row = mysqli_fetch_assoc($result);
+
+$st_subj = $db->get_subject_records($id);
+$value = mysqli_fetch_array($st_subj);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
 </head>
-<!-- Main Body -->
+<!-- Update Student data form -->
 
 <body>
     <div class="container">
@@ -39,7 +42,7 @@
                 <div class="row">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input type="hidden" class="form-control" value="<?php echo $row['id']; ?>" name="st_id">
+                            <input type="hidden" class="form-control" value="<?php echo $row['id']; ?>" name="id">
                             <input type="text" class="form-control" value="<?php echo $row['st_name']; ?>" name="st_name" placeholder="Student Name" required>
                         </div>
                         <div class="form-group col-md-6">
@@ -74,7 +77,9 @@
                             <tbody>
                                 <?php
                                 foreach ($st_subj as $key => $value) {
+                                    // print_r($value);
                                 ?>
+
                                     <tr>
                                         <td><?php echo $key + 1 ?></td>
                                         <td>

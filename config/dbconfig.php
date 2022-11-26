@@ -1,4 +1,5 @@
 <?php 
+    //Database Connection
     require_once('./config/operations.php');
 
     class dbconfig

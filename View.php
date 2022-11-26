@@ -26,6 +26,11 @@ $result = $db->view_record();
 <body>
 
     <div class="container">
+        <!-- call to function display message -->
+        <?php
+        $db->display_message();
+        $db->display_message();
+        ?>
 
         <div class="row form-inline">
             <div class="form-group col-md-10">
@@ -35,6 +40,7 @@ $result = $db->view_record();
                 <a type="button" href="index.php" class="btn btn-primary"> ADD STUDENTS</a>
             </div>
         </div>
+        <!-- view Data Code -->
         <div class="row">
             <table class="table table-hover table-bordered table-striped table-sm">
                 <thead>
@@ -56,7 +62,7 @@ $result = $db->view_record();
                         <?php
                         $student_id = $row['id'];
                         $s_query2 = "SELECT * FROM `st_sbject` where st_id = '$student_id'";
-                        $s_result2 = mysqli_query($db->connection,$s_query2);
+                        $s_result2 = mysqli_query($db->connection, $s_query2);
                         // print_r($s_result2);
                         $subject = "";
                         while ($row2 = mysqli_fetch_assoc($s_result2)) {

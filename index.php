@@ -1,12 +1,13 @@
-<?php 
-    require_once('./config/dbconfig.php'); 
-    $db = new operations();
+<?php
+require_once('./config/dbconfig.php');
+$db = new operations();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Form</title>
@@ -16,10 +17,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
-	
+
 </head>
+
 <body>
-<div class="container">
+    <!-- Add Student Data -->
+    <div class="container">
         <center>
             <div class="row">
                 <div class="col">
@@ -33,7 +36,7 @@
                 <div class="row">
                     <div class="form-row">
 
-                    <?php $db->Store_Record(); ?>
+                        <?php $db->Store_Record(); ?>
 
                         <div class="form-group col-md-6">
                             <input type="text" class="form-control" name="st_name" placeholder="Student Name" required>
@@ -100,10 +103,6 @@
 
         });
         let someValue = 1;
- 
-
-        
-
         $("#button1").on('click', function() {
             $('#myTable tr:last').after('<tr><td>' + someValue + '</td><td>\
             <input type="text" class="form-control" name="sbj_code[]" placeholder="Subject Code"></td>\
